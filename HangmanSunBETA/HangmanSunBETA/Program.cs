@@ -13,33 +13,259 @@ namespace HangmanSunBETA
 		static string wordToGuess;
 		static string[] hiddenWordToGuess;
 		static string choice;
-		//static int inputDifficultyChoice;
+		static int inputDifficultyChoice;
+		static bool continueGame = true;
 		static string playerName;
-		//static int playerLives;
-		//static int lives;
+		static int playerLives;
+		static string contin;
+
 
 
 
 		static void Main(string[] args)
 		{
+			while (continueGame)
 
+			{
 
-			//GameEngine();
+				PrepareTheGameScreen();
+				HangmanMusicGraphics();
+				ShowStartMenu();
+			}
+		}
 
-			Console.BackgroundColor = ConsoleColor.Black;
+		private static void ContinueGame()
+		{
+			Console.WriteLine("Press enter to continue".PadLeft(80));
+			Console.ReadLine();
+			ShowStartMenu();
+		}
+
+		private static void ExitGame()
+		{
+			Console.WriteLine("Sorry to see you go...".PadLeft(64));
+			Console.ReadLine();
+			Environment.Exit(0);
+		}
+
+		private static void PrepareTheGameScreen()
+		{
+			wordToGuess = "";
+			choice = "";
+			inputDifficultyChoice = 0;
+			playerName = "";
+
+			Console.WindowWidth = 110;
+			Console.WindowHeight = 30;
+			Console.BackgroundColor = ConsoleColor.DarkBlue;
 			Console.Clear();
-			Console.ForegroundColor = ConsoleColor.Red;
-			HangmanGraphic();
-			HangmanStart();
-			//GameEngine();
-			//WinAndLose();
-			DifficultyLevel();
-			//StoryLine();
+			Console.ForegroundColor = ConsoleColor.Yellow;
+		}
 
+
+		static void GameMusic()
+		{
+
+			{
+				System.Threading.Thread thread = new System.Threading.Thread(
+			 new System.Threading.ThreadStart(
+			 delegate ()
+			 {
+				 while (continueGame)
+				 {
+					 Console.Beep(659, 125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(523, 125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(784, 125);
+					 Thread.Sleep(375);
+					 Console.Beep(392, 125);
+					 Thread.Sleep(375);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(392, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(330, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(440, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(494, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(466, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(440, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(392, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(784, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(880, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(698, 125);
+					 Console.Beep(784, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(587, 125);
+					 Console.Beep(494, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(392, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(330, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(440, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(494, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(466, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(440, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(392, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(784, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(880, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(698, 125);
+					 Console.Beep(784, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(587, 125);
+					 Console.Beep(494, 125);
+					 Thread.Sleep(375);
+					 Console.Beep(784, 125);
+					 Console.Beep(740, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(415, 125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Console.Beep(587, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(784, 125);
+					 Console.Beep(740, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(698, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(625);
+					 Console.Beep(784, 125);
+					 Console.Beep(740, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(415, 125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Console.Beep(587, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(587, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(1125);
+					 Console.Beep(784, 125);
+					 Console.Beep(740, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(415, 125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Console.Beep(587, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(784, 125);
+					 Console.Beep(740, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(698, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(625);
+					 Console.Beep(784, 125);
+					 Console.Beep(740, 125);
+					 Console.Beep(698, 125);
+					 Thread.Sleep(42);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(659, 125);
+					 Thread.Sleep(167);
+					 Console.Beep(415, 125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(125);
+					 Console.Beep(440, 125);
+					 Console.Beep(523, 125);
+					 Console.Beep(587, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(622, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(587, 125);
+					 Thread.Sleep(250);
+					 Console.Beep(523, 125);
+					 Thread.Sleep(625);
+
+				 }
+			 }
+			 ));
+
+				thread.Start();
+			}
 
 		}
 
-		static void HangmanStart()
+
+
+
+
+		static void ShowStartMenu()
 		{
 			Console.Clear();
 			Console.WriteLine();
@@ -48,73 +274,154 @@ namespace HangmanSunBETA
 			Console.WriteLine();
 			Console.WriteLine();
 			Console.WriteLine();
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			Console.WriteLine("***                 Choose one option               ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("***                     1.Start                     ***".PadLeft(85));
-			Console.WriteLine("***                     2.Difficulty                ***".PadLeft(85));
-			Console.WriteLine("***                     3.Story                     ***".PadLeft(85));
-			Console.WriteLine("***                     4.Info                      ***".PadLeft(85));
-			Console.WriteLine("***                     5.Quit                      ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("***        To choose one option type in a number    ***".PadLeft(85));
-			Console.WriteLine("***                  between 1 and 5                ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			Console.WriteLine("*******************************************************".PadLeft(85));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("***                 Choose one option               ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                     1.Start                     ***".PadLeft(80));
+			Console.WriteLine("***                     2.Storyline                 ***".PadLeft(80));
+			Console.WriteLine("***                     3.Info                      ***".PadLeft(80));
+			Console.WriteLine("***                     4.Quit                      ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***        To choose one option type in a number    ***".PadLeft(80));
+			Console.WriteLine("***                  between 1 and 5                ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
 			choice = Console.ReadLine();
 
 			switch (choice)
 			{
-				case "1": GameEngine(); break;
-				case "2": DifficultyLevel(); break;
-				//case "3": StoryLine(); break;
-				//case "4": Info(); break;
-				case "5": Environment.Exit(0); break;
-				default: Console.WriteLine("You must pick a choice ranging from 1 to 5".PadLeft(80)); Console.ReadLine(); HangmanStart(); break;
+				case "1": CollectDataAndStartTheGame(); break;
+				case "2": StoryLine(); break;
+				case "3": Info(); break;
+				case "4": ExitGame(); break;
+				default:
+					Console.WriteLine("You must pick a choice ranging from 1 to 5".PadLeft(73)); Console.ReadLine();
+					ShowStartMenu(); break;
 			}
-
 		}
-
-		static void GameEngine()
+		private static void Info()
 		{
-
-			//inpuitDifficultyChoice = 1;
-			//wordToGuess = wordBank[inpuitDifficultyChoice];
-			//hiddenWord = new string[wordToGuess.Length];
-
+			Console.Clear();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***          Here there will be som guidence        ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			ContinueGame();
+		}
+		private static void CollectDataAndStartTheGame()
+		{
 			do
 			{
 
 				Console.Clear();
-				Console.WriteLine("Please type in your name!".PadLeft(70));
 				Console.WriteLine();
-				Console.WriteLine("Your name must be at least 3 characters".PadLeft(77));
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***            Please type in your name!            ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***     Your name must be at least 3 characters!    ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine("*******************************************************".PadLeft(80));
+
+
+				Console.WriteLine();
+				//Console.WriteLine("".PadLeft(77));
 				playerName = Console.ReadLine();
+
 
 
 			} while (playerName.Length <= 2);
 
-			Console.Clear();
-			Console.WriteLine("                          Welcome " + playerName + " now you have the chance to save the guilty convict!");
-			Console.WriteLine();
-			Console.WriteLine("Press enter to continue".PadLeft(70));
-			Console.ReadLine();
+			DifficultyLevel();
+			PlayHangman();
+		}
+
+
+
+
+
+
+		static void PlayHangman()
+		{
+
+
+
+			if (continueGame == true)
+			{
+				GameMusic();
+			}
+
+
 
 			for (int i = 0; i < wordToGuess.Length; i++)
 			{
-				Console.Write(hiddenWordToGuess[i] += " _ ");
-
+				Console.Write(hiddenWordToGuess[i] += "-");
 			}
-			//Hej
 
-			bool continueGame = true;
+
+
 			while (continueGame == true)
 			{
-				string inputGuess = Console.ReadLine();
-				Console.WriteLine("Please guess the right word! You must save Mr.Plugger!".PadLeft(85));
-				//string inputGuess = Console.ReadLine();
+				string inputGuess = Console.ReadLine().ToLower();
+				Console.Clear();
+				Console.WriteLine();
+				Console.WriteLine("                                                Welcome " + playerName);
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***            Now you have the chance to           ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***             save the guilty convict!            ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("***                                                 ***".PadLeft(80));
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine("*******************************************************".PadLeft(80));
+				Console.WriteLine();
+				Console.WriteLine("Please take another guess!".PadLeft(65));
+				Console.WriteLine("                                         You have " + playerLives + " lives left!");
+				playerLives--;
+				MrPluggerGraphic();
+
+
+
 				for (int i = 0; i < wordToGuess.Length; i++)
 				{
 					if (inputGuess == wordToGuess[i].ToString())
@@ -129,22 +436,65 @@ namespace HangmanSunBETA
 					Console.Write(hiddenWordToGuess[i]);
 				}
 
+
+				Console.WriteLine();
 				if (continueGame == false)
-					Console.WriteLine("You saved Mr.Plugger, to thank you he decided to punch you in the face".PadLeft(87));
-				Console.ReadLine();
+				{
+					Console.WriteLine();
+					Console.WriteLine();
+					Console.WriteLine("You saved Mr.Plugger, to thank you he decided to punch you in the face!!!".PadLeft(89));
+					Console.WriteLine();
+					Console.WriteLine("Would you like to play again? Y/N".PadLeft(68));
+					string contin = Console.ReadLine().ToLower();
+
+
+					{
+						while (contin != "n")
+						{
+
+							Console.WriteLine();
+							Console.WriteLine("Would you like to play again? Y/N".PadLeft(68));
+							contin = Console.ReadLine();
+							if (contin == "y")
+							{
+								continueGame = true;
+								ShowStartMenu();
+							}
+						}
+						continueGame = false;
+						ExitGame();
+					}
+				}
+				else if (playerLives <= 0)
+				{
+					Console.WriteLine();
+					Console.WriteLine("OH NOES! You killed poor Mr.Plugger!".PadLeft(70));
+
+					{
+						while (contin != "n")
+						{
+
+							Console.WriteLine();
+							Console.WriteLine("Would you like to play again? Y/N".PadLeft(68));
+							contin = Console.ReadLine();
+							if (contin == "y")
+							{
+								continueGame = true;
+								ShowStartMenu();
+							}
+						}
+						continueGame = false;
+						ExitGame();
+					}
+
+
+
+
+
+				}
+
 			}
-
-
-
-
-
-
 		}
-
-
-
-
-
 		static void DifficultyLevel()
 		{
 			Console.Clear();
@@ -154,153 +504,371 @@ namespace HangmanSunBETA
 			Console.WriteLine();
 			Console.WriteLine();
 			Console.WriteLine();
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			Console.WriteLine("***              Choose difficulty level            ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("***                     1.Easy                      ***".PadLeft(85));
-			Console.WriteLine("***                     2.Normal                    ***".PadLeft(85));
-			Console.WriteLine("***                     3.Hard                      ***".PadLeft(85));
-			Console.WriteLine("***                     4.Back                      ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("***        To choose one option type in a number    ***".PadLeft(85));
-			Console.WriteLine("***                  between 1 and 4                ***".PadLeft(85));
-			Console.WriteLine("***                                                 ***".PadLeft(85));
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			Console.WriteLine("*******************************************************".PadLeft(85));
-			int inputDifficultyChoice = Convert.ToInt32(Console.ReadLine());
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("***              Choose difficulty level            ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                     1.Easy                      ***".PadLeft(80));
+			Console.WriteLine("***                     2.Normal                    ***".PadLeft(80));
+			Console.WriteLine("***                     3.Hard                      ***".PadLeft(80));
+			Console.WriteLine("***                     4.Back                      ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***        To choose one option type in a number    ***".PadLeft(80));
+			Console.WriteLine("***                  between 1 and 4                ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
 
 
-			if (inputDifficultyChoice == 1)
+			string inputChoice = Console.ReadLine();
+			if (inputChoice == "1")
 			{
 				inputDifficultyChoice = 0;
 				wordToGuess = wordBank[inputDifficultyChoice];
 				hiddenWordToGuess = new string[wordToGuess.Length];
-				HangmanStart();
+				playerLives = 10;
+				PlayHangman();
 			}
-			else if (inputDifficultyChoice == 2)
+			else if (inputChoice == "2")
 			{
 				inputDifficultyChoice = 1;
 				wordToGuess = wordBank[inputDifficultyChoice];
 				hiddenWordToGuess = new string[wordToGuess.Length];
-				HangmanStart();
+				playerLives = 7;
+				PlayHangman();
 			}
-			else if (inputDifficultyChoice == 3)
+			else if (inputChoice == "3")
 			{
 				inputDifficultyChoice = 2;
 				wordToGuess = wordBank[inputDifficultyChoice];
 				hiddenWordToGuess = new string[wordToGuess.Length];
-				HangmanStart();
+				playerLives = 5;
+				PlayHangman();
 			}
-			else if (inputDifficultyChoice == 4)
+			else if (inputChoice == "4")
 			{
 				inputDifficultyChoice = 4;
-				HangmanStart();
+				ShowStartMenu();
 			}
 			else
 			{
-				while (inputDifficultyChoice > 4 || inputDifficultyChoice < 1)
+				while (inputChoice != "1" && inputChoice != "2" && inputChoice != "3" && inputChoice != "4")
 				{
 					Console.WriteLine("Please type in a choice between 1 and 4".PadLeft(76));
-					Console.ReadLine();
 					DifficultyLevel();
-
 				}
 			}
-
-
 		}
 
 
-		static void HangmanGraphic()
+		static void HangmanMusicGraphics()
 		{
-			var arr = new[]
-			{
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                                                                                             ",
-				   @"                                             ██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗",
-				   @"                                             ██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║",
-				   @"                                             ███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║",
-				   @"                                             ██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║",
-				   @"                                             ██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║",
-				   @"                                             ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝",
-				   @"                                                                                                             ",
-				   @"                                                                                                  Version 1.0",
-			};
 
-			Console.WindowWidth = 160;
-			Console.WriteLine("\n\n");
-			foreach (string line in arr)
-				Console.WriteLine(line);
-			Console.ReadKey();
-			Console.Beep(440, 500); Console.Beep(440, 500);
-			Console.Beep(440, 500);
-			Console.Beep(349, 350); Console.Beep(523, 150);
-			Console.Beep(440, 500); Console.Beep(349, 350);
-			Console.Beep(523, 150); Console.Beep(440, 1000);
-			Console.Beep(659, 500); Console.Beep(659, 500);
-			Console.Beep(659, 500); Console.Beep(698, 350);
-			Console.Beep(523, 150);
-			Console.Beep(415, 500); Console.Beep(349, 350);
-			Console.Beep(523, 150); Console.Beep(440, 1000);
-			Console.Beep(880, 500); Console.Beep(440, 350);
-			Console.Beep(440, 150); Console.Beep(880, 500);
-			Console.Beep(830, 250);
-			Console.Beep(784, 250);
-			Console.Beep(740, 125); Console.Beep(698, 125);
-			Console.Beep(740, 250);
-			Thread.Sleep(250); // Delay 250 milliseconds !!!!
-			Console.Beep(455, 250); Console.Beep(622, 500);
-			Console.Beep(587, 250); Console.Beep(554, 250);
-			Console.Beep(523, 125); Console.Beep(466, 125);
-			Console.Beep(523, 250);
-			Thread.Sleep(250); // Delay 250 milliseconds !!!!
-			Console.Beep(349, 125); Console.Beep(415, 500);
-			Console.Beep(349, 375); Console.Beep(440, 125);
-			Console.Beep(523, 500); Console.Beep(440, 375);
-			Console.Beep(523, 125); Console.Beep(659, 1000);
-			Console.Beep(880, 500); Console.Beep(440, 350);
-			Console.Beep(440, 150); Console.Beep(880, 500);
-			Console.Beep(830, 250); Console.Beep(784, 250);
-			Console.Beep(740, 125); Console.Beep(698, 125);
-			Console.Beep(740, 250);
-			Thread.Sleep(250);
-			Console.Beep(455, 250); Console.Beep(622, 500);
-			Console.Beep(587, 250); Console.Beep(554, 250);
-			Console.Beep(523, 125); Console.Beep(466, 125);
-			Console.Beep(523, 250);
-			Thread.Sleep(250);
-			Console.Beep(349, 250); Console.Beep(415, 500);
-			Console.Beep(349, 375); Console.Beep(523, 125);
-			Console.Beep(440, 500); Console.Beep(349, 375);
-			Console.Beep(261, 125); Console.Beep(440, 1000);
-			Thread.Sleep(100);
+
+			Thread.Sleep(1000);
+
 			Console.Clear();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine(@"██╗  ██╗ █████╗ ".PadLeft(65));
+			Console.WriteLine(@"██║  ██║██╔══██╗".PadLeft(65));
+			Console.WriteLine(@"███████║███████║".PadLeft(65));
+			Console.WriteLine(@"██╔══██║██╔══██║".PadLeft(65));
+			Console.WriteLine(@"██║  ██║██║  ██║".PadLeft(65));
+			Console.WriteLine(@"╚═╝  ╚═╝╚═╝  ╚═╝".PadLeft(65));
+
+			Console.Beep(440, 500);   //
+			Console.Beep(440, 500);
+			Console.Clear();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine(@"██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ".PadLeft(70));
+			Console.WriteLine(@"██║  ██║██╔══██╗████╗  ██║██╔════╝ ".PadLeft(70));
+			Console.WriteLine(@"███████║███████║██╔██╗ ██║██║  ███╗".PadLeft(70));
+			Console.WriteLine(@"██╔══██║██╔══██║██║╚██╗██║██║   ██║".PadLeft(70));
+			Console.WriteLine(@"██║  ██║██║  ██║██║ ╚████║╚██████╔╝".PadLeft(70));
+			Console.WriteLine(@"╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ".PadLeft(70));
+
+
+			Console.Beep(440, 500); //
+			Console.Beep(349, 350);
+			Console.Beep(523, 150);
+
+			Console.Clear();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine(@"██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ".PadLeft(80));
+			Console.WriteLine(@"██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗".PadLeft(80));
+			Console.WriteLine(@"███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║".PadLeft(80));
+			Console.WriteLine(@"██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║".PadLeft(80));
+			Console.WriteLine(@"██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║".PadLeft(80));
+			Console.WriteLine(@"╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝".PadLeft(80));
+			Console.Beep(440, 500); //
+
+			Console.Beep(349, 350);
+			Console.Beep(523, 150);
+			Console.Clear();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine();
+			Console.WriteLine(@"██╗  ██╗ █████╗ ███╗   ██╗ ██████╗ ███╗   ███╗ █████╗ ███╗   ██╗".PadLeft(85));
+			Console.WriteLine(@"██║  ██║██╔══██╗████╗  ██║██╔════╝ ████╗ ████║██╔══██╗████╗  ██║".PadLeft(85));
+			Console.WriteLine(@"███████║███████║██╔██╗ ██║██║  ███╗██╔████╔██║███████║██╔██╗ ██║".PadLeft(85));
+			Console.WriteLine(@"██╔══██║██╔══██║██║╚██╗██║██║   ██║██║╚██╔╝██║██╔══██║██║╚██╗██║".PadLeft(85));
+			Console.WriteLine(@"██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║".PadLeft(85));
+			Console.WriteLine(@"╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝".PadLeft(85));
+			Console.WriteLine(@"                                                                ".PadLeft(85));
+			Console.WriteLine(@"                                                     Version 1.0".PadLeft(85));
+			Console.Beep(440, 1000); //
+			Console.WriteLine("Welcome to Hangman The Game".PadLeft(65));
+
+			Console.Beep(659, 500);//
+			Console.Beep(659, 500);
+			Console.WriteLine("Now we will have some fun!".PadLeft(65));
+			Console.Beep(659, 500);//
+			Console.Beep(698, 350);
+			Console.Beep(523, 150);
+			Console.WriteLine();
+			Console.WriteLine("Try to save Mr.Plugger".PadLeft(62));
+			Console.Beep(415, 500);//
+			Console.Beep(349, 350);
+			Console.Beep(523, 150);
+			Console.WriteLine("by guessing the right word!".PadLeft(66));
+			Console.Beep(440, 1000);//
+			Console.WriteLine();
+			Console.WriteLine("Press enter to continue".PadLeft(67));
+
+
 		}
-		//Hej
+
 		static void StoryLine()
 		{
 			Console.Clear();
 			Console.WriteLine();
 			Console.WriteLine();
 			Console.WriteLine();
-			Console.WriteLine("                        Mr.Plugger är en SKYLDIG stackare som vill komma loss från helvetets gap!");
 			Console.WriteLine();
 			Console.WriteLine();
 			Console.WriteLine();
-			Console.WriteLine("                        Men du kan rädda honom! Är du beredd att skapa orättvisa med att rädda Mr.Plugger?");
-			Console.WriteLine();
-			Console.WriteLine();
-			Console.WriteLine();
-			Console.WriteLine("                        Valet är ditt!");
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***    Mr.Plugger is a GUILTY bastard that wants    ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***       to escape the clutches of hell, but       ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***                can you save him?                ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***        Are you ready to create injustice?       ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("***              by saving Mr.Plugger?              ***".PadLeft(80));
+			Console.WriteLine("***                                                 ***".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			Console.WriteLine("*******************************************************".PadLeft(80));
+			ContinueGame();
 		}
 
+
+		static void MrPluggerGraphic()
+		{
+
+			if (playerLives == 10)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+			}
+			else if (playerLives == 9)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                         __________ _________ ");
+
+			}
+			else if (playerLives == 8)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                          ");
+				Console.WriteLine(@"                                                   ");
+				Console.WriteLine(@"                                                   ");
+				Console.WriteLine(@"                                        __________ _________ ");
+			}
+			else if (playerLives == 7)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                             ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 6)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 5)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         O");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 4)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         O");
+				Console.WriteLine(@"                                                  |         | ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 3)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         O");
+				Console.WriteLine(@"                                                  |        /| ");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 2)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         O");
+				Console.WriteLine(@"                                                  |        /|\");
+				Console.WriteLine(@"                                                  |           ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 1)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         O");
+				Console.WriteLine(@"                                                  |        /|\");
+				Console.WriteLine(@"                                                  |        /  ");
+				Console.WriteLine(@"                                                  |          ");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+			else if (playerLives == 0)
+			{
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine();
+				Console.WriteLine(@"                                                   _________ ");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |         O");
+				Console.WriteLine(@"                                                  |        /|\");
+				Console.WriteLine(@"                                                  |        /|\");
+				Console.WriteLine(@"                                                  |         |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                                  |");
+				Console.WriteLine(@"                                        __________|_________ ");
+			}
+
+		}
 	}
-}
+	}
