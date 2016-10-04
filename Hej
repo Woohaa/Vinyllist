@@ -1,0 +1,128 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.IO;
+
+
+namespace Vinylsamling
+{
+	class Program
+	{
+		static List<string> vinylList = new List<string>();
+		static string albumName { get; set; }
+		static string artistName { get; set; }
+		static string yearOfRelease { get; set; }
+		static string  rewievScore { get; set; }
+
+		static void Main(string[] args)
+		{
+			vinylList = File.ReadAllLines(@"C: \Users\wooha\Desktop\Vinyl.txt").ToList();
+
+			do
+			{
+				
+				ShowChoiceGraphics.ShowChoiceMenu();
+				//AddVinylToList();
+				//ShowVinylInList();
+				//Console.ReadLine();
+			} while (true);
+		}
+
+		public static void ShowVinylInList()
+		{
+			Console.Clear();
+			for (int i = 0; i < vinylList.Count; i++)
+			{
+				Console.Write("Row:" + (i + 1) + " " + vinylList[i] + "\n");
+			}
+			Console.WriteLine();
+			Console.ReadLine();
+		}
+		
+
+		public static void AddVinylToList()
+		{
+			Console.WriteLine("Please type in the name of the artist: ");
+			albumName = (Console.ReadLine());
+			Console.WriteLine("Please type in the name of the album: ");
+			artistName = (Console.ReadLine());
+			Console.WriteLine("Please type in the release year of the album: ");
+			yearOfRelease = (Console.ReadLine());
+			Console.WriteLine("Please type in the rewiev score 1 to 5: ");
+			rewievScore = (Console.ReadLine());
+			vinylList.Add(albumName + " " + artistName + " " + yearOfRelease + " " + rewievScore);
+			SaveVinylToList();
+
+	}
+
+		public static void EditVinylList()
+		{
+			ShowVinylInList();
+			Console.WriteLine("Which Row do you wish to replace?");
+			int editInput = Convert.ToInt32(Console.ReadLine());
+
+	
+		}
+
+		public static void RemoveFromVinylList()
+		{
+			bool removeFromListLoop = true;
+
+			while (removeFromListLoop)
+			{
+				Console.WriteLine(vinylList.Count());
+				//Console.ReadLine();
+				ShowVinylInList();
+				Console.WriteLine("Select which row you want to remove");
+				try
+				{
+					int input = Convert.ToInt32(Console.ReadLine());
+
+					if (input > vinylList.Count || input < 0)
+						Console.WriteLine("You may only chose a number within the list!");
+					else
+					{
+						vinylList.RemoveAt(input - 1);
+						Console.WriteLine("Removed! Press enter to continue, if you want to go back press 1");
+					}
+				}
+				catch (Exception)
+				{
+					Console.WriteLine("Error! You must select a valid row number");
+				}
+				File.WriteAllLines(@"C:\Users\wooha\Desktop\Vinyl.txt", vinylList);
+				//Console.WriteLine("Removed! Press enter to continue, if you want to go back press 1");
+				if (Console.ReadLine() == "1")
+					removeFromListLoop = false;
+				else
+					Console.WriteLine("You must press 1");
+			}
+
+		}
+
+		public static void SaveVinylToList()
+		{
+			string saveToListOption;
+	
+			Console.WriteLine("Do you want to save the list to a textfile? press Y or N");
+			saveToListOption = Console.ReadLine().ToLower();
+			do
+			{
+				//saveToListOption = Console.ReadLine().ToLower();
+				if (saveToListOption == "y")
+				{
+					File.WriteAllLines(@"C:\Users\wooha\Desktop\Vinyl.txt", vinylList);
+				}
+				else if (saveToListOption == "n")
+					ShowChoiceGraphics.ShowChoiceMenu();
+			} while (saveToListOption != "y" && saveToListOption != "n");
+
+
+		}
+
+		}
+
+
+	}
