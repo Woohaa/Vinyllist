@@ -10,6 +10,8 @@ namespace Vinylsamling
 {
 	class Program
 	{
+
+		//Welcome! 
 		static public List<string> vinylList = new List<string>();
 	
 
