@@ -1,0 +1,6 @@
+C:\Users\wooha\Source\Repos\HangmanSunBeta6\Vinylsamling\Vinylsamling\bin\Debug\Vinylsamling.exe.config
+C:\Users\wooha\Source\Repos\HangmanSunBeta6\Vinylsamling\Vinylsamling\bin\Debug\Vinylsamling.exe
+C:\Users\wooha\Source\Repos\HangmanSunBeta6\Vinylsamling\Vinylsamling\bin\Debug\Vinylsamling.pdb
+C:\Users\wooha\Source\Repos\HangmanSunBeta6\Vinylsamling\Vinylsamling\obj\Debug\Vinylsamling.csprojResolveAssemblyReference.cache
+C:\Users\wooha\Source\Repos\HangmanSunBeta6\Vinylsamling\Vinylsamling\obj\Debug\Vinylsamling.exe
+C:\Users\wooha\Source\Repos\HangmanSunBeta6\Vinylsamling\Vinylsamling\obj\Debug\Vinylsamling.pdb
