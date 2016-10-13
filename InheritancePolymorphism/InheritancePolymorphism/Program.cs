@@ -10,6 +10,7 @@ namespace InheritancePolymorphism
 		
 	{
 
+
 		static void Main(string[] args)
 		{
 			RunProgram run = new RunProgram();
@@ -18,5 +19,4 @@ namespace InheritancePolymorphism
 		}
 	}
 }
-
 
